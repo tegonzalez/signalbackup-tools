@@ -194,6 +194,11 @@ int main(int argc, char *argv[])
                                    true /*targetisdummy*/))
       return 1;
 
+    // Save the DummyBackup to a file if requested
+    if (!arg.saveandroidbackup().empty())
+      if (!dummydb.exportBackup(arg.saveandroidbackup(), arg.opassphrase(), arg.overwrite(), !SignalBackup::DROPATTACHMENTDATA, false /*onlydb*/))
+        return 1;
+
     if (!arg.exportdesktophtml().empty())
       if (!dummydb.exportHtml(arg.exportdesktophtml(), {} /*limittothreads*/, arg.limittodates(), arg.split_by(),
                               (arg.split_bool() ? arg.split() : -1), arg.setselfid(),  arg.includecalllog(), arg.searchpage(),

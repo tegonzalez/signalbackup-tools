@@ -27,6 +27,7 @@ Arg::Arg(int argc, char *argv[])
   d_positionals(0),
   d_maxpositional(2),
   d_progname(argv[0]),
+  d_saveandroidbackup(std::string()),
   d_onlyolderthan(std::string()),
   d_desktopdir(std::string()),
   d_desktopdirs_1(std::string()),
@@ -1896,6 +1897,19 @@ bool Arg::parseArgs(std::vector<std::string> const &arguments)
       d_searchpage = true;
       d_stickerpacks = true;
       d_addexportdetails = true;
+      continue;
+    }
+    if (option == "--saveandroidbackup")
+    {
+      if (i < argsize - 1)
+      {
+        d_saveandroidbackup = std::move(arguments[++i]);
+      }
+      else
+      {
+        std::cerr << "[ Error parsing command line option `" << option << "': Missing argument. ]" << std::endl;
+        ok = false;
+      }
       continue;
     }
     if (option[0] != '-')

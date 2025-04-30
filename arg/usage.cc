@@ -209,6 +209,11 @@ R"*(
    --autolimitdates                      Optional modifier for `--importfromdesktop'. Automatically limit
                                          the import of messages to those older than the first message in the
                                          INPUT backup file.
+--exportdesktophtml <DIRECTORY>          Export data from Signal Desktop to HTML files. This creates an
+                                         empty Android backup file temporarily.
+   --saveandroidbackup <FILE>            Optional modifier for `--exportdesktophtml'. Save the temporary
+                                         Android backup file created during export to <FILE> which can be
+                                         used as a standard Signal Android backup file.
 --desktopkey <HEXKEY>                    Provide the decrypted SQLCipher key for decrypting the desktop
                                          database (see README).
 --showdesktopkey                         Show the (hex) SQLCipher key used for the desktop database.
